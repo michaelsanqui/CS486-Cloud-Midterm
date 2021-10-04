@@ -1,9 +1,12 @@
+import React from 'react';
 import { useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 import Search from './search';
 import Announcer from './announcer';
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
+
 
 const posts = [
     { id: '1', name: 'This first post is about React' },
@@ -42,9 +45,10 @@ const App = () => {
                         <li key={post.id}>{post.name}</li>
                     ))}
                 </ul>
+                <AmplifySignOut />
             </div>
         </Router>
     );
 };
 
-export default App;
+export default withAuthenticator(App);
